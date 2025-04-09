@@ -1,3 +1,6 @@
+"use client";
+
+import { deleteJoke } from "@/lib/actions/jokes-actions";
 import styles from "./JokesList.module.css";
 
 export default function JokesList({ jokes }) {
@@ -6,7 +9,7 @@ export default function JokesList({ jokes }) {
       {jokes.map((joke) => (
         <li key={joke._id}>
           <span>{joke.text}</span>
-          <button>Delete</button>
+          <button onClick={() => deleteJoke(joke._id)}>Delete</button>
         </li>
       ))}
     </ul>

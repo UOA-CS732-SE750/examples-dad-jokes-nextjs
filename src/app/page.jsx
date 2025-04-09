@@ -1,17 +1,15 @@
 import ReloadableJoke from "@/components/ReloadableJoke";
 import styles from "./page.module.css";
+import { retrieveRandomJoke } from "@/lib/actions/jokes-actions";
 
-export default function HomePage() {
-  const joke = {
-    _id: "1",
-    text: "Why did the scarecrow win an award? Because he was outstanding in his field!"
-  };
+export default async function HomePage() {
+  const initialJoke = await retrieveRandomJoke();
 
   return (
     <div>
       <h1>Daily Dad Joke</h1>
       <main className={styles.main}>
-        <ReloadableJoke initialJoke={joke} />
+        <ReloadableJoke initialJoke={initialJoke} />
       </main>
     </div>
   );
